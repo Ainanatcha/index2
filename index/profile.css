@@ -1,0 +1,116 @@
+body {
+    font-family: "Tahoma", sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #e9dbd9;
+    position: relative;
+}
+
+/* Container ฟองอากาศ */
+#bubble-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* ให้คลิกผ่านไปยัง container */
+    z-index: 0;
+}
+
+/* ฟองอากาศ */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgb(0, 0, 0); /* ฟ้า */
+    opacity: 0.7;
+    animation: rise linear forwards;
+    z-index: 0;
+}
+
+/* animation ของฟอง */
+@keyframes rise {
+    0% { transform: translateY(100vh); opacity: 0.10; }
+    100% { transform: translateY(-50px); opacity: 0; }
+}
+
+/* Container หลัก */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 40px;
+    gap: 40px;
+    background-color: #be8f8f;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1; /* อยู่เหนือฟอง */
+    animation: slide-in 1s ease forwards;
+}
+
+/* ภาพซ้าย */
+.water-effect img {
+    width: 350px;
+    border-radius: 10px;
+    animation: ripple 4s infinite ease-in-out;
+}
+
+@keyframes ripple {
+    0%, 100% { transform: scale(1) translateY(0); filter: brightness(1); }
+    50% { transform: scale(1.02) translateY(-2px); filter: brightness(1.05); }
+}
+
+/* ข้อความขวามือ */
+.fade-in {
+    flex: 1;
+    padding: 0 20px;
+    color: #63302a;
+}
+
+.fade-in h1,
+.fade-in p,
+.fade-in h2,
+.fade-in li {
+    animation: textSlide 0.8s ease-in-out forwards, floatText 3s ease-in-out infinite alternate;
+    opacity: 0;
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0); opacity: 0.8; }
+    50% { transform: translateY(-5px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 0.8; }
+}
+
+.fade-in h1 { animation-delay: 0.2s, 0.2s; }
+.fade-in p:nth-of-type(1) { animation-delay: 0.4s, 0.4s; }
+.fade-in p:nth-of-type(2) { animation-delay: 0.6s, 0.6s; }
+.fade-in p:nth-of-type(3) { animation-delay: 0.8s, 0.8s; }
+.fade-in p:nth-of-type(4) { animation-delay: 1s, 1s; }
+.fade-in h2 { animation-delay: 1.2s, 1.2s; }
+.fade-in li:nth-child(1) { animation-delay: 1.4s, 1.4s; }
+.fade-in li:nth-child(2) { animation-delay: 1.6s, 1.6s; }
+.fade-in li:nth-child(3) { animation-delay: 1.8s, 1.8s; }
+.fade-in li:nth-child(4) { animation-delay: 2s, 2s; }
+
+@keyframes textSlide {
+    0% { opacity: 0; transform: translateX(-20px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.info-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-section li {
+    margin-bottom: 5px;
+    font-size: 18px;
+}

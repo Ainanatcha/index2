@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Follow Your Heart</title>
+  <link rel="stylesheet" href="heart.css">
+</head>
+<body>
+  <div class="container">
+    <div class="top-buttons">
+    <div class="top-buttons">
+  <button onclick="location.href='certificates.html'">certificates</button>
+   <button onclick="location.href='contact.html'">contact</button>
+  <button onclick="location.href='inspiration.html'">inspiration</button>
+  <button onclick="location.href='profile.html'">profile</button>
+  <button onclick="location.href='Activities.html'">Activities</button>
+</div>
+    </div>
+
+    <div class="quote">
+      <p class="thai">“สิ่งเดียวที่คุณมีซึ่งไม่มีใครมีคือตัวคุณเอง”</p>
+      <p class="english">Follow your heart's voice</p>
+    </div>
+  </div>
+  <script>
+const trailCount = 15; // จำนวนจุดน้ำ
+const trails = [];
+
+for(let i=0; i<trailCount; i++){
+  const div = document.createElement('div');
+  div.classList.add('trail');
+  document.body.appendChild(div);
+  trails.push({el: div, x: 0, y: 0});
+}
+
+document.addEventListener('mousemove', e => {
+  let x = e.clientX;
+  let y = e.clientY;
+
+  trails.forEach((trail, index) => {
+    setTimeout(() => {
+      trail.el.style.transform = `translate(${x}px, ${y}px)`;
+    }, index * 20); // delay ทำให้เหมือนน้ำไหล
+  });
+});
+</script>
+</body>
+</html>
